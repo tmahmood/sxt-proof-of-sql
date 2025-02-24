@@ -1,5 +1,5 @@
 use crate::base::scalar::MontScalar;
-use ark_ff::PrimeField;
+use ark_ff::{MontConfig, PrimeField};
 
 #[cfg(test)]
 mod curve25519_tests;
@@ -8,6 +8,7 @@ mod curve25519_tests;
 ///
 /// Using the `Scalar` trait rather than this type is encouraged to allow for easier switching of the underlying field.
 pub type Curve25519Scalar = MontScalar<ark_curve25519::FrConfig>;
+
 
 impl From<Curve25519Scalar> for curve25519_dalek::scalar::Scalar {
     fn from(value: Curve25519Scalar) -> Self {
