@@ -1,10 +1,9 @@
 use super::CommitmentEvaluationProof;
 use crate::base::{commitment::vec_commitment_ext::VecCommitmentExt, database::Column};
 use ark_std::UniformRand;
-#[cfg(feature = "blitzar")]
-use blitzar::proof::InnerProductProof;
 use merlin::Transcript;
 use num_traits::{One, Zero};
+use crate::base::commitment::naive_evaluation_proof::NaiveEvaluationProof as InnerProductProof;
 
 pub fn test_simple_commitment_evaluation_proof<CP: CommitmentEvaluationProof>(
     prover_setup: &CP::ProverPublicSetup<'_>,

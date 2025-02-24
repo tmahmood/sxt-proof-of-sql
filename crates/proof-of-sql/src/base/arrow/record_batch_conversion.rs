@@ -108,8 +108,9 @@ mod tests {
         datatypes::{DataType, Field, Schema},
         record_batch::RecordBatch,
     };
-    use curve25519_dalek::RistrettoPoint;
+    // use curve25519_dalek::RistrettoPoint;
     use std::sync::Arc;
+    use crate::base::commitment::naive_commitment::NaiveCommitment as RistrettoPoint;
     use crate::base::scalar::test_scalar::TestScalar;
 
     #[test]
