@@ -5,9 +5,10 @@ use num_traits::{Inv, One, Zero};
 use rand_core::SeedableRng;
 use rand::Rng;
 use byte_slice_cast::AsByteSlice;
+use std::cmp::Ordering;
 use crate::base::map::IndexSet;
 use crate::base::scalar::test_scalar::TestScalar;
-use crate::base::scalar::{test_scalar_constants, Scalar, ScalarConversionError};
+use crate::base::scalar::{test_scalar_constants, Scalar, ScalarConversionError, ScalarExt};
 use crate::base::slice_ops::{slice_cast, slice_cast_with};
 use crate::proof_primitive::inner_product::Curve25519Scalar;
 
@@ -477,4 +478,18 @@ fn test_slice_cast_from_curve25519_scalar_to_dalek_scalar() {
     let b: Vec<curve25519_dalek::Scalar> = vec![curve25519_dalek::Scalar::from(1u64), curve25519_dalek::Scalar::from(2u64)];
     let a: Vec<curve25519_dalek::Scalar> = slice_cast(&a);
     assert_eq!(a, b);
+}
+
+#[test]
+fn scalar_comparison_works() {
+    let zero = Curve25519Scalar::ZERO;
+    let one = Curve25519Scalar::ONE;
+    let two = Curve25519Scalar::TWO;
+    let max = Curve25519Scalar::MAX_SIGNED;
+    let min = max + one;
+    assert_eq!(max.signed_cmp(&one), Ordering::Greater);
+    assert_eq!(one.signed_cmp(&zero), Ordering::Greater);
+    assert_eq!(min.signed_cmp(&zero), Ordering::Less);
+    assert_eq!((two * max).signed_cmp(&zero), Ordering::Less);
+    assert_eq!(two * max + one, zero);
 }

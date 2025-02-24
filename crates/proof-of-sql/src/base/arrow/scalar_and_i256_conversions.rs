@@ -61,7 +61,6 @@ mod tests {
             database::scalar_and_i256_conversions::{MAX_SUPPORTED_I256, MIN_SUPPORTED_I256},
             scalar::{test_scalar::TestScalar, Scalar},
         },
-        proof_primitive::inner_product::Curve25519Scalar,
     };
     use arrow::datatypes::i256;
     use num_traits::Zero;
@@ -93,12 +92,6 @@ mod tests {
         // Must fit inside 252 bits and so requires fallible
         fn try_from(value: i256) -> Result<Self, ()> {
             convert_i256_to_scalar(&value).ok_or(())
-        }
-    }
-
-    impl From<Curve25519Scalar> for i256 {
-        fn from(value: Curve25519Scalar) -> Self {
-            convert_scalar_to_i256(&value)
         }
     }
 
