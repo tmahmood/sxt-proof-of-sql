@@ -1,8 +1,8 @@
 use crate::{
     base::database::{owned_table_utility::*, OwnedTable},
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::postprocessing::{apply_postprocessing_steps, test_utility::*},
 };
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_slice_an_owned_table_using_only_a_positive_limit_value() {

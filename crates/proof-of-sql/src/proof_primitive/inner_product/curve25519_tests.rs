@@ -10,7 +10,7 @@ use crate::base::map::IndexSet;
 use crate::base::scalar::test_scalar::TestScalar;
 use crate::base::scalar::{test_scalar_constants, Scalar, ScalarConversionError, ScalarExt};
 use crate::base::slice_ops::{slice_cast, slice_cast_with};
-use crate::proof_primitive::inner_product::Curve25519Scalar;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_have_correct_constants_for_curve_25519_scalar() {

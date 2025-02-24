@@ -1,6 +1,5 @@
 use crate::{
     base::database::{owned_table_utility::*, OwnedTable},
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::postprocessing::{
         apply_postprocessing_steps, group_by_postprocessing::*, test_utility::*,
         OwnedTablePostprocessing, PostprocessingError,
@@ -8,6 +7,7 @@ use crate::{
 };
 use bigdecimal::BigDecimal;
 use proof_of_sql_parser::{intermediate_ast::AggregationOperator, utility::*};
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_cannot_have_invalid_group_bys() {

@@ -4,12 +4,12 @@ use crate::{
         commitment::InnerProductProof,
         database::{owned_table_utility::*, OwnedTableTestAccessor, TableRef, TestAccessor},
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::{
         proof::{exercise_verification, VerifiableQueryResult},
         proof_exprs::test_utility::*,
     },
 };
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 /// `select a, sum(c) as sum_c, count(*) as __count__ from sxt.t where b = 99 group by a`
 #[test]

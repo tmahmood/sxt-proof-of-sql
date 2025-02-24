@@ -7,7 +7,6 @@ use crate::{
         },
         scalar::test_scalar::TestScalar,
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::{
         parse::ConversionError,
         proof::{exercise_verification, QueryError, VerifiableQueryResult},
@@ -22,6 +21,7 @@ use rand::{
     rngs::StdRng,
 };
 use rand_core::SeedableRng;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 // select a * 2 as a, c, b * 4.5 as b, d * 3  + 4.7 as d, e from sxt.t where d * 3.9 = 8.19
 #[test]

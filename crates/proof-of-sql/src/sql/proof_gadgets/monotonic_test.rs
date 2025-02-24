@@ -114,11 +114,11 @@ mod tests {
             database::{table_utility::*, ColumnType, TableTestAccessor},
             math::decimal::Precision,
         },
-        proof_primitive::inner_product::Curve25519Scalar,
         sql::proof::{QueryError, VerifiableQueryResult},
     };
     use blitzar::proof::InnerProductProof;
     use proof_of_sql_parser::posql_time::{PoSQLTimeUnit, PoSQLTimeZone};
+    use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
     fn check_monotonic<const STRICT: bool, const ASC: bool>(
         table_ref: TableRef,

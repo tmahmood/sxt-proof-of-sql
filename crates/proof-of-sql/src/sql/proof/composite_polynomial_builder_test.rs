@@ -1,5 +1,5 @@
 use super::CompositePolynomialBuilder;
-use crate::proof_primitive::inner_product::Curve25519Scalar;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 use num_traits::One;
 
 #[test]

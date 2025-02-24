@@ -1,10 +1,8 @@
 use super::{fold_columns, fold_vals};
-use crate::{
-    base::{database::Column, math::decimal::Precision},
-    proof_primitive::inner_product::Curve25519Scalar,
-};
+use crate::base::{database::Column, math::decimal::Precision};
 use bumpalo::Bump;
 use num_traits::Zero;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_fold_columns_with_scalars() {

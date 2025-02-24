@@ -7,7 +7,6 @@ use crate::{
             TableRef,
         },
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::{
         proof::{exercise_verification, VerifiableQueryResult},
         proof_exprs::test_utility::*,
@@ -20,6 +19,7 @@ use rand::{
     rngs::StdRng,
 };
 use rand_core::SeedableRng;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 fn test_random_tables_with_given_offset(offset: usize) {
     let dist = Uniform::new(-3, 4);

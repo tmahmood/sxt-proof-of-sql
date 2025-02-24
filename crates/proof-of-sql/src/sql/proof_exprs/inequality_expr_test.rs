@@ -7,7 +7,6 @@ use crate::{
         },
         scalar::{Scalar, ScalarExt},
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::{
         parse::ConversionError,
         proof::{exercise_verification, VerifiableQueryResult},
@@ -23,6 +22,7 @@ use rand::{
     rngs::StdRng,
 };
 use rand_core::SeedableRng;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_compare_columns_with_small_timestamp_values_gte() {

@@ -1,16 +1,14 @@
 use super::{ProofPlan, VerifiableQueryResult};
-use crate::{
-    base::{
-        commitment::{Commitment, CommittableColumn},
-        database::{owned_table_utility::*, OwnedColumn, OwnedTable, TableRef, TestAccessor},
-        scalar::Scalar,
-    },
-    proof_primitive::inner_product::Curve25519Scalar,
+use crate::base::{
+    commitment::{Commitment, CommittableColumn},
+    database::{owned_table_utility::*, OwnedColumn, OwnedTable, TableRef, TestAccessor},
+    scalar::Scalar,
 };
 use blitzar::proof::InnerProductProof;
 use curve25519_dalek::{ristretto::RistrettoPoint, traits::Identity};
 use num_traits::One;
 use serde::Serialize;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 /// This function takes a valid `verifiable_result`, copies it, tweaks it, and checks that
 /// verification fails.

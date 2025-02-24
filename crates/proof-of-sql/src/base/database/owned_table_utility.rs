@@ -4,7 +4,7 @@
 //! # Example
 //! ```
 //! use proof_of_sql::base::{database::owned_table_utility::*};
-//! use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+//! use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 //! let result = owned_table::<Curve25519Scalar>([
 //!     bigint("a", [1, 2, 3]),
 //!     boolean("b", [true, false, true]),
@@ -28,7 +28,7 @@ use sqlparser::ast::Ident;
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     bigint("a", [1, 2, 3]),
 ///     boolean("b", [true, false, true]),
@@ -52,7 +52,7 @@ pub fn owned_table<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     uint8("a", [1_u8, 2, 3]),
 /// ]);
@@ -72,7 +72,7 @@ pub fn uint8<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     tinyint("a", [1_i8, 2, 3]),
 /// ]);
@@ -92,7 +92,7 @@ pub fn tinyint<S: Scalar>(
 /// # Example
 /// ```rust
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     smallint("a", [1_i16, 2, 3]),
 /// ]);
@@ -112,7 +112,7 @@ pub fn smallint<S: Scalar>(
 /// # Example
 /// ```rust
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     int("a", [1, 2, 3]),
 /// ]);
@@ -132,7 +132,7 @@ pub fn int<S: Scalar>(
 /// # Example
 /// ```rust
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     bigint("a", [1, 2, 3]),
 /// ]);
@@ -153,7 +153,7 @@ pub fn bigint<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     boolean("a", [true, false, true]),
 /// ]);
@@ -173,7 +173,7 @@ pub fn boolean<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     int128("a", [1, 2, 3]),
 /// ]);
@@ -193,7 +193,7 @@ pub fn int128<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     scalar("a", [1, 2, 3]),
 /// ]);
@@ -213,7 +213,7 @@ pub fn scalar<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     varchar("a", ["a", "b", "c"]),
 /// ]);
@@ -233,7 +233,7 @@ pub fn varchar<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///    varbinary("a", [[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
 /// ]);
@@ -253,7 +253,7 @@ pub fn varbinary<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let result = owned_table::<Curve25519Scalar>([
 ///     decimal75("a", 12, 1, [1, 2, 3]),
 /// ]);
@@ -289,7 +289,7 @@ pub fn decimal75<S: Scalar>(
 /// # Example
 /// ```
 /// use proof_of_sql::base::{database::owned_table_utility::*, };
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// use proof_of_sql_parser::{
 ///    posql_time::{PoSQLTimeZone, PoSQLTimeUnit}};
 ///

@@ -1,9 +1,9 @@
 use crate::{
     base::database::{owned_table_utility::*, OwnedTable},
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::postprocessing::{apply_postprocessing_steps, test_utility::*, OwnedTablePostprocessing},
 };
 use rand::{seq::SliceRandom, Rng};
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_transform_a_result_using_a_single_order_by_in_ascending_direction() {

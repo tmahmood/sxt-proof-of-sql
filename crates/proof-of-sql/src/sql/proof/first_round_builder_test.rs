@@ -1,9 +1,7 @@
 use super::FirstRoundBuilder;
-use crate::{
-    base::commitment::{Commitment, CommittableColumn},
-    proof_primitive::inner_product::Curve25519Scalar,
-};
+use crate::base::commitment::{Commitment, CommittableColumn};
 use curve25519_dalek::RistrettoPoint;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_compute_commitments_for_intermediate_mles_using_a_zero_offset() {

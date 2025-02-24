@@ -13,12 +13,12 @@ use crate::{
         proof::ProofError,
         scalar::Scalar,
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::proof::{FirstRoundBuilder, QueryData, SumcheckSubpolynomialType},
 };
 use bumpalo::Bump;
 use serde::Serialize;
 use sqlparser::ast::Ident;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 /// Type to allow us to prove and verify an artificial polynomial where we prove
 /// that every entry in the result is zero

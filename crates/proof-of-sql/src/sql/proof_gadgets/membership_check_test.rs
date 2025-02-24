@@ -193,10 +193,10 @@ mod tests {
     use super::*;
     use crate::{
         base::database::{table_utility::*, ColumnType, TableTestAccessor, TestAccessor},
-        proof_primitive::inner_product::Curve25519Scalar,
         sql::proof::VerifiableQueryResult,
     };
     use blitzar::proof::InnerProductProof;
+    use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
     #[test]
     fn we_can_do_minimal_membership_check() {

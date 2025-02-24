@@ -10,12 +10,9 @@ use proof_of_sql::{
     base::database::{
         owned_table_utility::*, OwnedTable, OwnedTableTestAccessor, TableRef, TestAccessor,
     },
-    proof_primitive::{
-        dory::{
-            DoryEvaluationProof, DoryProverPublicSetup, DoryVerifierPublicSetup,
-            DynamicDoryEvaluationProof, ProverSetup, PublicParameters, VerifierSetup,
-        },
-        inner_product::Curve25519Scalar,
+    proof_primitive::dory::{
+        DoryEvaluationProof, DoryProverPublicSetup, DoryVerifierPublicSetup,
+        DynamicDoryEvaluationProof, ProverSetup, PublicParameters, VerifierSetup,
     },
     sql::{
         parse::{ConversionError, QueryExpr},
@@ -23,6 +20,7 @@ use proof_of_sql::{
         proof::{QueryError, VerifiableQueryResult},
     },
 };
+use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 #[cfg(feature = "blitzar")]

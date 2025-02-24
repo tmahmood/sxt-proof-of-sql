@@ -10,15 +10,13 @@ use crate::{
         proof::Transcript as _,
         scalar::{test_scalar::TestScalar, MontScalar, Scalar},
     },
-    proof_primitive::{
-        inner_product::Curve25519Scalar,
-        sumcheck::{ProverState, SumcheckProof},
-    },
+    proof_primitive::sumcheck::{ProverState, SumcheckProof},
 };
 use alloc::rc::Rc;
 use ark_std::UniformRand;
 use merlin::Transcript;
 use num_traits::{One, Zero};
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn test_create_verify_proof() {

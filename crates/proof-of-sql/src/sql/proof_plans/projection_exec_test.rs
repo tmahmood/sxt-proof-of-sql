@@ -8,7 +8,6 @@ use crate::{
         map::{indexmap, IndexMap, IndexSet},
         math::decimal::Precision,
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::{
         proof::{
             exercise_verification, FirstRoundBuilder, ProofPlan, ProvableQueryResult,
@@ -20,6 +19,7 @@ use crate::{
 use blitzar::proof::InnerProductProof;
 use bumpalo::Bump;
 use sqlparser::ast::Ident;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_correctly_fetch_the_query_result_schema() {

@@ -1,6 +1,7 @@
 use super::SumcheckMleEvaluations;
-use crate::{proof_primitive::inner_product::Curve25519Scalar, sql::proof::SumcheckRandomScalars};
+use crate::sql::proof::SumcheckRandomScalars;
 use num_traits::One;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_track_the_evaluation_of_mles_used_within_sumcheck() {

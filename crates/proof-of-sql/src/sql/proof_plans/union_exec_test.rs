@@ -7,7 +7,6 @@ use crate::{
         },
         map::indexmap,
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::{
         proof::{
             exercise_verification, FirstRoundBuilder, ProvableQueryResult, ProverEvaluate,
@@ -18,6 +17,7 @@ use crate::{
 };
 use blitzar::proof::InnerProductProof;
 use bumpalo::Bump;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_prove_and_get_the_correct_empty_result_from_a_union_with_no_tables() {

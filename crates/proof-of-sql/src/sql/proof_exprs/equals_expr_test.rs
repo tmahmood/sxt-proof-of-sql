@@ -7,7 +7,6 @@ use crate::{
         },
         scalar::Scalar,
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::{
         proof::{exercise_verification, VerifiableQueryResult},
         proof_exprs::{test_utility::*, DynProofExpr, ProofExpr},
@@ -21,6 +20,7 @@ use rand::{
     rngs::StdRng,
 };
 use rand_core::SeedableRng;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn we_can_prove_an_equality_query_with_no_rows() {

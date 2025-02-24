@@ -5,7 +5,7 @@
 //! ```
 //! use bumpalo::Bump;
 //! use proof_of_sql::base::{database::table_utility::*};
-//! use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+//! use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 //! let alloc = Bump::new();
 //! let result = table::<Curve25519Scalar>([
 //!     borrowed_bigint("a", [1, 2, 3], &alloc),
@@ -33,7 +33,7 @@ use sqlparser::ast::Ident;
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_bigint("a", [1, 2, 3], &alloc),
@@ -72,7 +72,7 @@ pub fn table_with_row_count<'a, S: Scalar>(
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_uint8("a", [1_u8, 2, 3], &alloc),
@@ -94,7 +94,7 @@ pub fn borrowed_uint8<S: Scalar>(
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_tinyint("a", [1_i8, 2, 3], &alloc),
@@ -117,7 +117,7 @@ pub fn borrowed_tinyint<S: Scalar>(
 /// ```rust
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_smallint("a", [1_i16, 2, 3], &alloc),
@@ -141,7 +141,7 @@ pub fn borrowed_smallint<S: Scalar>(
 /// ```rust
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_int("a", [1, 2, 3], &alloc),
@@ -165,7 +165,7 @@ pub fn borrowed_int<S: Scalar>(
 /// ```rust
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_bigint("a", [1, 2, 3], &alloc),
@@ -188,7 +188,7 @@ pub fn borrowed_bigint<S: Scalar>(
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_boolean("a", [true, false, true], &alloc),
@@ -211,7 +211,7 @@ pub fn borrowed_boolean<S: Scalar>(
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_int128("a", [1, 2, 3], &alloc),
@@ -234,7 +234,7 @@ pub fn borrowed_int128<S: Scalar>(
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_scalar("a", [1, 2, 3], &alloc),
@@ -256,7 +256,7 @@ pub fn borrowed_scalar<S: Scalar>(
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_varchar("a", ["a", "b", "c"], &alloc),
@@ -286,7 +286,7 @@ pub fn borrowed_varchar<'a, S: Scalar>(
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// let alloc = Bump::new();
 /// let result = table::<Curve25519Scalar>([
 ///     borrowed_decimal75("a", 12, 1, [1, 2, 3], &alloc),
@@ -327,7 +327,7 @@ pub fn borrowed_decimal75<S: Scalar>(
 /// ```
 /// use bumpalo::Bump;
 /// use proof_of_sql::base::{database::table_utility::*};
-/// use proof_of_sql::proof_primitive::inner_product::Curve25519Scalar;
+/// use proof_of_sql::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 /// use proof_of_sql_parser::{
 ///    posql_time::{PoSQLTimeZone, PoSQLTimeUnit}};
 ///

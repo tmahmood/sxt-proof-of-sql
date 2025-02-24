@@ -486,11 +486,12 @@ pub(crate) fn verifier_evaluate_range_check<S: Scalar>(
 mod tests {
     use super::*;
     use crate::{
-        base::scalar::Scalar, proof_primitive::inner_product::Curve25519Scalar as S,
+        base::scalar::Scalar,
         sql::proof::FinalRoundBuilder,
     };
     use alloc::collections::VecDeque;
     use num_traits::Inv;
+    use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar as S;
 
     #[test]
     fn we_can_decompose_small_scalars_to_words() {

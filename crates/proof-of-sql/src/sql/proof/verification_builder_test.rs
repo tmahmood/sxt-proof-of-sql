@@ -1,10 +1,8 @@
 use super::{SumcheckMleEvaluations, VerificationBuilderImpl};
-use crate::{
-    proof_primitive::inner_product::Curve25519Scalar,
-    sql::proof::{SumcheckSubpolynomialType, VerificationBuilder},
-};
+use crate::sql::proof::{SumcheckSubpolynomialType, VerificationBuilder};
 use alloc::collections::VecDeque;
 use num_traits::Zero;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 #[test]
 fn an_empty_sumcheck_polynomial_evaluates_to_zero() {

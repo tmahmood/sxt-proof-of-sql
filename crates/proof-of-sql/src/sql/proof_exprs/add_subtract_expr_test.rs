@@ -7,7 +7,6 @@ use crate::{
         },
         scalar::test_scalar::TestScalar,
     },
-    proof_primitive::inner_product::Curve25519Scalar,
     sql::{
         parse::ConversionError,
         proof::{exercise_verification, QueryError, VerifiableQueryResult},
@@ -22,6 +21,7 @@ use rand::{
     rngs::StdRng,
 };
 use rand_core::SeedableRng;
+use crate::proof_primitive::inner_product::curve_255519_scalar::Curve25519Scalar;
 
 // select a, c, b + 4 as res, d from sxt.t where a - b = 3
 #[test]
