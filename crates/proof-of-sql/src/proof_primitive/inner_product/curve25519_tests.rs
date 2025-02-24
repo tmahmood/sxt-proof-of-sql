@@ -8,6 +8,7 @@ use byte_slice_cast::AsByteSlice;
 use crate::base::map::IndexSet;
 use crate::base::scalar::test_scalar::TestScalar;
 use crate::base::scalar::{test_scalar_constants, Scalar, ScalarConversionError};
+use crate::base::slice_ops::{slice_cast, slice_cast_with};
 use crate::proof_primitive::inner_product::Curve25519Scalar;
 
 #[test]
@@ -458,4 +459,22 @@ fn the_string_hash_implementation_uses_the_full_range_of_bits() {
             curr_iters += 1;
         }
     }
+}
+
+/// add tests for [`slice_cast_with`]
+#[test]
+fn test_slice_cast_with_from_curve25519_scalar_to_dalek_scalar() {
+    let a: Vec<Curve25519Scalar> = vec![Curve25519Scalar::from(1u64), Curve25519Scalar::from(2u64)];
+    let b: Vec<curve25519_dalek::Scalar> = vec![curve25519_dalek::Scalar::from(1u64), curve25519_dalek::Scalar::from(2u64)];
+    let a: Vec<curve25519_dalek::Scalar> = slice_cast_with(&a, core::convert::Into::into);
+    assert_eq!(a, b);
+}
+
+/// add tests for [`slice_cast`]
+#[test]
+fn test_slice_cast_from_curve25519_scalar_to_dalek_scalar() {
+    let a: Vec<Curve25519Scalar> = vec![Curve25519Scalar::from(1u64), Curve25519Scalar::from(2u64)];
+    let b: Vec<curve25519_dalek::Scalar> = vec![curve25519_dalek::Scalar::from(1u64), curve25519_dalek::Scalar::from(2u64)];
+    let a: Vec<curve25519_dalek::Scalar> = slice_cast(&a);
+    assert_eq!(a, b);
 }

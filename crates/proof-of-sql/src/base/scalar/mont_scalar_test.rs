@@ -3,7 +3,6 @@ use crate::base::scalar::{
     ScalarConversionError,
 };
 use num_bigint::BigInt;
-use rand::distributions::Distribution;
 #[test]
 fn test_bigint_to_scalar_overflow() {
     assert_eq!(

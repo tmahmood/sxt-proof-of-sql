@@ -1,5 +1,5 @@
 use crate::base::scalar::MontScalar;
-use ark_ff::{MontConfig, PrimeField};
+use ark_ff::{PrimeField};
 
 #[cfg(test)]
 mod curve25519_tests;
