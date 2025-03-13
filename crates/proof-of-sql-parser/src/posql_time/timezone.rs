@@ -73,9 +73,60 @@ impl fmt::Display for PoSQLTimeZone {
 }
 
 #[cfg(test)]
+mod timezone_arc_str_parsing {
+
+    use alloc::format;
+    use crate::posql_time::timezone;
+    use super::*;
+
+
+    #[test]
+    fn test_parsing_from_arc_str_fixed_offset() {
+        let ss = "00:00";
+        let timezone_arc: Arc<str> = Arc::from(ss);
+        let timezone = timezone::PoSQLTimeZone::try_from(&Some(timezone_arc)).unwrap(); // +01:15
+        assert_eq!(format!("{timezone}"), "+00:00");
+    }
+
+    #[test]
+    fn test_parsing_from_arc_str_fixed_offset_positive() {
+        let input_timezone = "+01:15";
+        let timezone_arc: Arc<str> = Arc::from(input_timezone);
+        let timezone = timezone::PoSQLTimeZone::try_from(&Some(timezone_arc)).unwrap(); // +01:15
+        assert_eq!(format!("{timezone}"), "+01:15");
+    }
+
+    #[test]
+    fn test_parsing_from_arc_str_fixed_offset_negative() {
+        let input_timezone = "-01:03";
+        let timezone_arc: Arc<str> = Arc::from(input_timezone);
+        let timezone = timezone::PoSQLTimeZone::try_from(&Some(timezone_arc)).unwrap(); // +01:15
+        assert_eq!(format!("{timezone}"), "-01:03");
+    }
+
+    #[test]
+    fn test_invalid_timezone() {
+        let expected = PoSQLTimestampError::InvalidTimezone {timezone: "WRONG".to_string()};
+        let timezone_input = "WRONG";
+        let timezone_arc: Arc<str> = Arc::from(timezone_input);
+        let timezone_err = timezone::PoSQLTimeZone::try_from(&Some(timezone_arc)); // +01:15
+        assert_eq!(
+            expected,
+            timezone_err.err().unwrap()
+        );
+    }
+
+    #[test]
+    fn test_when_none() {
+        let timezone = timezone::PoSQLTimeZone::try_from(&None).unwrap(); // +01:15
+        assert_eq!(format!("{timezone}"), "+00:00");
+    }
+}
+
+#[cfg(test)]
 mod timezone_parsing_tests {
     use crate::posql_time::timezone;
-    use alloc::format;
+    use alloc::{format};
 
     #[test]
     fn test_display_fixed_offset_positive() {

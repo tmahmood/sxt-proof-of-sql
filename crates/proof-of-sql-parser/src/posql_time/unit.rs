@@ -57,9 +57,47 @@ impl fmt::Display for PoSQLTimeUnit {
 #[cfg(test)]
 #[expect(deprecated, clippy::missing_panics_doc)]
 mod time_unit_tests {
+    use alloc::string::ToString;
     use super::*;
     use crate::posql_time::{PoSQLTimestamp, PoSQLTimestampError};
     use chrono::{TimeZone, Utc};
+
+    #[test]
+    fn test_u64_conversion() {
+        assert_eq!(PoSQLTimeUnit::Second.try_into(), Ok(0));
+        assert_eq!(PoSQLTimeUnit::Millisecond.try_into(), Ok(3));
+        assert_eq!(PoSQLTimeUnit::Microsecond.try_into(), Ok(6));
+        assert_eq!(PoSQLTimeUnit::Nanosecond.try_into(), Ok(9));
+    }
+
+    #[test]
+    fn test_precision_display() {
+        let input = "2023-06-26T12:34:56Z";
+        let result = PoSQLTimestamp::try_from(input).unwrap();
+        assert_eq!(
+            result.timeunit().to_string(),
+            "seconds (precision: 0)"
+        );
+        let input = "2023-06-26T12:34:56.123456Z";
+        let result = PoSQLTimestamp::try_from(input).unwrap();
+        assert_eq!(
+            result.timeunit().to_string(),
+            "microseconds (precision: 6)"
+        );
+        let input = "2023-06-26T12:34:56.123Z";
+        let result = PoSQLTimestamp::try_from(input).unwrap();
+        assert_eq!(
+            result.timeunit().to_string(),
+            "milliseconds (precision: 3)"
+        );
+
+        let input = "2023-06-26T12:34:56.123456789Z";
+        let result = PoSQLTimestamp::try_from(input).unwrap();
+        assert_eq!(
+            result.timeunit().to_string(),
+            "nanoseconds (precision: 9)"
+        );
+    }
 
     #[test]
     fn test_valid_precisions() {

@@ -49,6 +49,15 @@ pub struct AliasedResultExpr {
     pub alias: Identifier,
 }
 
+impl From<AliasedResultExpr> for SelectResultExpr {
+    fn from(value: AliasedResultExpr) -> Self {
+        SelectResultExpr::AliasedResultExpr(AliasedResultExpr {
+            expr: value.expr,
+            alias: value.alias,
+        })
+    }
+}
+
 impl AliasedResultExpr {
     /// Create a new `AliasedResultExpr`
     #[must_use]
