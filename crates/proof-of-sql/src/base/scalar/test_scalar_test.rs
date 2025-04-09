@@ -86,3 +86,23 @@ fn we_can_convert_u256_to_test_scalar_with_wrapping_of_random_u256() {
     // ASSERT
     assert_eq!(test_scalar, expected_scalar);
 }
+
+#[test]
+fn test_conversion_between_u64_ar_and_u8() {
+    let target = [138, 233, 374, 0x0102030405060708u64];
+    let actual: TestScalar = TestScalar::from_limbs(&target);
+    let original: TestScalar = TestScalar::from(&target);
+
+    assert_eq!(
+        actual,
+        original
+    );
+
+    let backwards = actual.to_limbs();
+
+    assert_eq!(
+        backwards,
+        target
+    )
+}
+

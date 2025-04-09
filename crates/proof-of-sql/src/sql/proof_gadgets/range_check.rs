@@ -174,7 +174,7 @@ fn decompose_scalars_to_words<'a, T, S: Scalar + 'a>(
     T: Copy + Into<S>,
 {
     for (i, scalar) in column_data.iter().enumerate() {
-        let scalar_array: [u64; 4] = (*scalar).into().into();
+        let scalar_array: [u64; 4] = (*scalar).into().to_limbs();
         // Convert the [u64; 4] into a slice of bytes
         let scalar_bytes = &cast_slice::<u64, u8>(&scalar_array)[..31];
 
