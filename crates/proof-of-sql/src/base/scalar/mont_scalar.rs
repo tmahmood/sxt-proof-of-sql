@@ -402,6 +402,24 @@ where
         );
         255 - T::MODULUS.0[3].leading_zeros() as u8
     };
+
+    fn from_limbs(vals: &[u64; 4]) -> Self {
+        let u8s = vals.iter().fold(Vec::new(), |mut acc, v| {
+            acc.extend(v.to_le_bytes());
+            acc
+        });
+        Self::from_le_bytes_mod_order(&u8s)
+    }
+
+    fn to_limbs(&self) -> [u64; 4] {
+        let arr = self.to_bytes_le();
+        let mut result = [0u64; 4];
+        let vv: Vec<_> = arr.chunks(size_of::<u64>()).map(|v| {
+            u64::from_le_bytes(v.to_vec().try_into().unwrap())
+        }).collect();
+        result.copy_from_slice(&vv);
+        result
+    }
 }
 
 impl<T> TryFrom<MontScalar<T>> for bool
@@ -412,9 +430,9 @@ where
     type Error = ScalarConversionError;
     fn try_from(value: MontScalar<T>) -> Result<Self, Self::Error> {
         let (sign, abs): (i128, [u64; 4]) = if value > <MontScalar<T>>::MAX_SIGNED {
-            (-1, (-value).into())
+            (-1, (-value).to_limbs())
         } else {
-            (1, value.into())
+            (1, value.to_limbs())
         };
         if abs[1] != 0 || abs[2] != 0 || abs[3] != 0 {
             return Err(ScalarConversionError::Overflow {
@@ -446,7 +464,7 @@ where
             });
         }
 
-        let abs: [u64; 4] = value.into();
+        let abs: [u64; 4] = value.to_limbs();
 
         if abs[1] != 0 || abs[2] != 0 || abs[3] != 0 {
             return Err(ScalarConversionError::Overflow {
@@ -470,9 +488,9 @@ where
     type Error = ScalarConversionError;
     fn try_from(value: MontScalar<T>) -> Result<Self, Self::Error> {
         let (sign, abs): (i128, [u64; 4]) = if value > <MontScalar<T>>::MAX_SIGNED {
-            (-1, (-value).into())
+            (-1, (-value).to_limbs())
         } else {
-            (1, value.into())
+            (1, value.to_limbs())
         };
         if abs[1] != 0 || abs[2] != 0 || abs[3] != 0 {
             return Err(ScalarConversionError::Overflow {
@@ -494,9 +512,9 @@ where
     type Error = ScalarConversionError;
     fn try_from(value: MontScalar<T>) -> Result<Self, Self::Error> {
         let (sign, abs): (i128, [u64; 4]) = if value > <MontScalar<T>>::MAX_SIGNED {
-            (-1, (-value).into())
+            (-1, (-value).to_limbs())
         } else {
-            (1, value.into())
+            (1, value.to_limbs())
         };
         if abs[1] != 0 || abs[2] != 0 || abs[3] != 0 {
             return Err(ScalarConversionError::Overflow {
@@ -518,9 +536,9 @@ where
     type Error = ScalarConversionError;
     fn try_from(value: MontScalar<T>) -> Result<Self, Self::Error> {
         let (sign, abs): (i128, [u64; 4]) = if value > <MontScalar<T>>::MAX_SIGNED {
-            (-1, (-value).into())
+            (-1, (-value).to_limbs())
         } else {
-            (1, value.into())
+            (1, value.to_limbs())
         };
         if abs[1] != 0 || abs[2] != 0 || abs[3] != 0 {
             return Err(ScalarConversionError::Overflow {
@@ -542,9 +560,9 @@ where
     type Error = ScalarConversionError;
     fn try_from(value: MontScalar<T>) -> Result<Self, Self::Error> {
         let (sign, abs): (i128, [u64; 4]) = if value > <MontScalar<T>>::MAX_SIGNED {
-            (-1, (-value).into())
+            (-1, (-value).to_limbs())
         } else {
-            (1, value.into())
+            (1, value.to_limbs())
         };
         if abs[1] != 0 || abs[2] != 0 || abs[3] != 0 {
             return Err(ScalarConversionError::Overflow {
@@ -568,9 +586,9 @@ where
     #[expect(clippy::cast_possible_wrap)]
     fn try_from(value: MontScalar<T>) -> Result<Self, Self::Error> {
         let (sign, abs): (i128, [u64; 4]) = if value > <MontScalar<T>>::MAX_SIGNED {
-            (-1, (-value).into())
+            (-1, (-value).to_limbs())
         } else {
-            (1, value.into())
+            (1, value.to_limbs())
         };
         if abs[2] != 0 || abs[3] != 0 {
             return Err(ScalarConversionError::Overflow {
@@ -602,7 +620,7 @@ where
         } else {
             num_bigint::Sign::Plus
         };
-        let value_abs: [u64; 4] = (if is_negative { -value } else { value }).into();
+        let value_abs: [u64; 4] = (if is_negative { (-value).to_limbs() } else { value.to_limbs() });
         let bits: &[u8] = bytemuck::cast_slice(&value_abs);
         BigInt::from_bytes_le(sign, bits)
     }
